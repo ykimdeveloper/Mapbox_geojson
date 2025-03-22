@@ -4,6 +4,18 @@
 
 ![Screenshot of the App](./assets/screenshot.png)
 
+![Screenshot with arcgis block2 boundary  ](./assets/screenshot2.png)
+
+Santa Monica boundaries goes into the ocean
+https://www.openstreetmap.org/relation/3353288
+![Santa Monica booundary at openstreetmap](./assets/screenshot3.png)
+
+ArcGis has 3 boundaries at Santa Monica
+https://www.arcgis.com/apps/mapviewer/index.html?layers=78251bbda6214e348cb9cf304bbcac98
+https://gisdata.santamonica.gov/maps/78251bbda6214e348cb9cf304bbcac98/about
+![ArcGis has 3 boundaries for Santa Monica](./assets/screenshot4.png)
+
+
 
 
 App.js Main component that displays the map, sidebar with coordinates, and a reset button. It uses the custom hook to initialize and control the Mapbox map.
