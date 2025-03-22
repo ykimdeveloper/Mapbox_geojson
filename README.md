@@ -16,6 +16,30 @@ https://gisdata.santamonica.gov/maps/78251bbda6214e348cb9cf304bbcac98/about
 ![ArcGis has 3 boundaries for Santa Monica](./assets/screenshot4.png)
 
 
+## GeoJSON Files
+
+You can find the GeoJSON files in the [public/data_geojson directory](https://github.com/ykimdeveloper/Mapbox_geojson/tree/main/public/data_geojson).
+
+
+  - [x] Incorporated Cities:
+    - [x] West Hollywood
+    - [x] Beverly Hills
+    - [x] Culver City
+    - [x] Santa Monica
+    - [x] Universal City
+    - [x] San Fernando 
+    - [x] Inglewood 
+  - [ ] Unincorporated
+    - [x] Marina Del Ray
+    - [ ] Unincorporated LA Southwest of Culver City (this includes View Park-Windsor Hills, Ladera Heights, and oil fields)
+    - [ ] Federal Land (VA Campus)
+    - [x] Franklin Canyon (weird square above Beverly Hills)
+
+
+
+
+
+## project files
 
 
 App.js Main component that displays the map, sidebar with coordinates, and a reset button. It uses the custom hook to initialize and control the Mapbox map.
