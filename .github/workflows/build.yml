@@ -41,4 +41,5 @@ jobs:
           gcloud beta run services add-iam-policy-binding $SERVICE_NAME \
             --region us-west2 \
             --member=allUsers \
-            --role=roles/run.invoker
+            --role=roles/run.invoker \
+            --quiet
