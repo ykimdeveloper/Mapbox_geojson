@@ -37,4 +37,6 @@ jobs:
             --platform managed \
             --region us-west2 \
             --allow-unauthenticated
+            --set-env-vars VITE_MAPBOX_ACCESS_TOKEN=${{ secrets.VITE_MAPBOX_ACCESS_TOKEN }}
+
 
