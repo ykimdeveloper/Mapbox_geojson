@@ -71,25 +71,24 @@ export default defineConfig({
 
 2. Production Build: Run npm run build to generate static files in the dist/ folder.
 3. Deploy to GitHub Pages
-   1.
+
    ```
    npm run build
    npm install --save-dev gh-pages
    ```
-   2. package.json:
-   3.
+    package.json:
    ```
         "scripts": {
         "build": "vite build",
         "deploy": "gh-pages -d dist"
       }
    ```
-   3. Your app will then be available at https://<username>.github.io/my-app/
+4. Your app will then be available at https://<username>.github.io/my-app/
    ```npm run build
       npm run deploy
    ```
    ![Screenshot path for gh-pages  ](./assets/screenshot4a.png)
-4. Add secrets
+5. Add secrets
    ![Screenshot path for add secrets  ](./assets/screenshot5.png)
 
 ## Deploying using GitHub Actions to Google Cloud
