@@ -1,13 +1,29 @@
-FROM node
+# Stage 1: Build the Vite + React app
+FROM node:18 AS builder
 
 WORKDIR /app
 
-COPY package.json .
-RUN npm i
+# Install dependencies
+COPY package.json package-lock.json ./
+RUN npm install
 
+# Copy source files and build the app
 COPY . .
+RUN npm run build
 
+# Stage 2: Serve the App
+FROM node:18
 
-EXPOSE 5173
+WORKDIR /app
 
-CMD ["npm", "run", "dev"]
+# Install a lightweight static file server
+RUN npm install -g serve
+
+# Copy the production build output
+COPY --from=builder /app/dist ./dist
+
+# Expose the port (Cloud Run sets PORT, default to 8080)
+EXPOSE ${PORT:-8080}
+
+# Use the PORT provided via the environment or default to 8080
+CMD ["sh", "-c", "serve -s dist -l ${PORT:-8080}"]
