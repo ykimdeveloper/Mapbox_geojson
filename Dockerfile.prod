@@ -1,27 +1,23 @@
-# Base image: Node.js for building the app
-FROM node:20 AS builder
+# Use Node.js as the base image
+FROM node:18.15.0-alpine
 
+# Set the working directory in the container
 WORKDIR /app
+
+# Copy package.json and yarn.lock to the container
+COPY package.json yarn.lock ./
 
 # Install dependencies
-COPY package.json package-lock.json ./
-RUN npm install
+RUN yarn install --frozen-lockfile
 
-# Copy project files and build the app
+# Install dependencies
+RUN yarn install
+
+# Copy the app's source code to the container
 COPY . .
-RUN npm run build
 
-# Stage 2: Use a lightweight serverless image for deployment
-FROM node:20
+# Build the React app
+RUN yarn build
 
-WORKDIR /app
-
-# Copy built files
-COPY --from=builder /app/dist ./dist
-
-# Install a simple static file server (e.g., serve)
-RUN npm install -g serve
-
-# Expose port and serve static files
-EXPOSE 8080
-CMD ["serve", "-s", "dist", "-l", "8080"]
+# Serve the build
+CMD ["npx", "serve", "-s", "build"]
