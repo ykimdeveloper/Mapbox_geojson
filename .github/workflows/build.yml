@@ -38,8 +38,3 @@ jobs:
             --region us-west2 \
             --allow-unauthenticated
 
-          gcloud run services add-iam-policy-binding $SERVICE_NAME \
-            --region us-west2 \
-            --member=allUsers \
-            --role=roles/run.invoker \
-            --quiet
