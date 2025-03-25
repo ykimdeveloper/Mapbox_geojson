@@ -1,13 +1,27 @@
-# Stage 1: Build the React app
+# Base image: Node.js for building the app
 FROM node:20 AS builder
+
 WORKDIR /app
-COPY package*.json ./
+
+# Install dependencies
+COPY package.json package-lock.json ./
 RUN npm install
+
+# Copy project files and build the app
 COPY . .
 RUN npm run build
 
-# Stage 2: Serve the app with Nginx
-FROM nginx:alpine
-COPY --from=builder /app/dist /usr/share/nginx/html
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+# Stage 2: Use a lightweight serverless image for deployment
+FROM node:20
+
+WORKDIR /app
+
+# Copy built files
+COPY --from=builder /app/dist ./dist
+
+# Install a simple static file server (e.g., serve)
+RUN npm install -g serve
+
+# Expose port and serve static files
+EXPOSE 8080
+CMD ["serve", "-s", "dist", "-l", "8080"]
