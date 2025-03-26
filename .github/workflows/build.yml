@@ -25,10 +25,20 @@ jobs:
         run: |
           gcloud auth configure-docker
 
+      # - name: Build and Push Docker Image
+      #   run: |
+      #     docker build -t gcr.io/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.DOCKER_IMAGE_NAME }}:latest -f Dockerfile.prod .
+      #     docker push gcr.io/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.DOCKER_IMAGE_NAME }}:latest
+
+# need the secret at build time
       - name: Build and Push Docker Image
         run: |
-          docker build -t gcr.io/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.DOCKER_IMAGE_NAME }}:latest -f Dockerfile.prod .
+          docker build -t gcr.io/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.DOCKER_IMAGE_NAME }}:latest \
+            -f Dockerfile.prod \
+            --build-arg VITE_MAPBOX_ACCESS_TOKEN=${{ secrets.VITE_MAPBOX_ACCESS_TOKEN }} \
+            .
           docker push gcr.io/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.DOCKER_IMAGE_NAME }}:latest
+
 
       - name: Deploy to Cloud Run
         run: |
@@ -36,5 +46,6 @@ jobs:
             --image gcr.io/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.DOCKER_IMAGE_NAME }}:latest \
             --platform managed \
             --region us-west2 \
-            --allow-unauthenticated \
-            --set-env-vars=VITE_MAPBOX_ACCESS_TOKEN=${{ secrets.VITE_MAPBOX_ACCESS_TOKEN }}
+            --allow-unauthenticated 
+
+#  \ --set-env-vars=VITE_MAPBOX_ACCESS_TOKEN=${{ secrets.VITE_MAPBOX_ACCESS_TOKEN }}
