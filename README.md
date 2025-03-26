@@ -94,3 +94,7 @@ export default defineConfig({
 ## Deploying using GitHub Actions to Google Cloud
 
 ![Screenshot path for gh-pages  ](./assets/screenshot6.png)
+
+
+
+![Screenshot for successful cloud run with gh actions  ](./assets/screenshot7.png)
