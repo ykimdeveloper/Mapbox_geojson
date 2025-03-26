@@ -1,6 +1,6 @@
 ## Table of Contents
 
-- [## How to Get Geo Location](#-how-to-get-geo-location)
+- [How to Get Geo Location](#-how-to-get-geo-location)
 - [GeoJSON Files](#geojson-files)
 - [How to Run the App](#how-to-run-the-app)
   - [project files](#project-files)
@@ -8,7 +8,7 @@
   - [Deploying to GitHub Pages](#deploying-to-github-pages)
   - [Deploying using GitHub Actions to Google Cloud](#deploying-using-github-actions-to-google-cloud)
 
-## ## How to Get Geo Location
+## How to Get Geo Location
 
 - Extract geolocation and boundary data using OpenStreetMap and Overpass Turbo.
 
@@ -45,17 +45,15 @@
   - Boundary Output: out geom; retrieves full geometry of the boundaries.
 - Run query & Export results in GeoJSON format for mapping.
 
-![Screenshot of the App](./assets/screenshot.png)
-
-![Screenshot with arcgis block2 boundary  ](./assets/screenshot2.png)
-
 Santa Monica boundaries goes into the ocean
 https://www.openstreetmap.org/relation/3353288
+
 ![Santa Monica booundary at openstreetmap](./assets/screenshot3.png)
 
 ArcGis has 3 boundaries at Santa Monica
 https://www.arcgis.com/apps/mapviewer/index.html?layers=78251bbda6214e348cb9cf304bbcac98
 https://gisdata.santamonica.gov/maps/78251bbda6214e348cb9cf304bbcac98/about
+
 ![ArcGis has 3 boundaries for Santa Monica](./assets/screenshot4.png)
 
 ## GeoJSON Files
@@ -87,6 +85,12 @@ You can find the GeoJSON files in the [public/data_geojson directory](https://gi
   ➜  Network: http://192.168.4.145:5173/
   ➜  press h + enter to show help
 ```
+
+![Screenshot of the App](./assets/screenshot.png)
+
+![Screenshot with arcgis block2 boundary  ](./assets/screenshot2.png)
+
+* maybe clean up the bounaries in santa monica?
 
 App.js Main component that displays the map, sidebar with coordinates, and a reset button. It uses the custom hook to initialize and control the Mapbox map.
 
